@@ -1,7 +1,7 @@
 
 print("")
 print("")
-#QUESTAO 1
+                                              #QUESTAO 1
 print(" --------  QUESTAO 1  -------- ")
 print("")
 print (" 1) Observe o trecho de código abaixo: int INDICE = 13, SOMA = 0, K = 0;")
@@ -10,6 +10,8 @@ print ("Imprimir(SOMA);")
 print ("Ao final do processamento, qual será o valor da variável SOMA? ")
 print("")
 print("")
+
+print (" ______RESPOSTA _____")
 
 def calcular_soma(indice):
 
@@ -28,7 +30,7 @@ print(f"RESPOSTA: A soma dos números de 1 até {indice-1} é: {resultado}")
 print("")
 print("")
 
-#QUESTAO 2
+                                                   #QUESTAO 2
 
 print(" --------  QUESTAO 2  -------- ")
 print("")
@@ -37,6 +39,9 @@ print("")
 print("IMPORTANTE: Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;")
 print("")
 print("")
+
+print (" ______RESPOSTA _____")
+
 def pertence_fibonacci(num):
     
     a, b = 0, 1
@@ -58,53 +63,43 @@ else:
 print("")
 print("")
 
-#QUESTAO 3
+                                                    #QUESTAO 3
+
 print(" --------  QUESTAO 3  -------- ")
 print("")
 print(" 3) Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:")
 print(" • O menor valor de faturamento ocorrido em um dia do mês;")
 print(" • O maior valor de faturamento ocorrido em um dia do mês;")
 print(" • Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.")
+
+print (" ______RESPOSTA _____")
+
 import json
 
-# Exemplo de conteúdo JSON
-faturamento_json = '''
-{
-    "faturamento_diario": [1000.0, 2000.0, 0.0, 0.0, 1500.0, 700.0, 1200.0, 0.0, 0.0, 2500.0,
-                           800.0, 1500.0, 0.0, 1700.0, 2300.0, 4500.0, 3700.0, 0.0, 2100.0, 
-                           0.0, 2900.0, 3100.0, 0.0, 0.0, 2200.0, 2800.0, 2600.0, 0.0, 0.0, 3000.0]
-}
-'''
+def analisar_faturamento(arquivo):
+  with open(arquivo, 'r') as f:
+    dados = json.load(f)
 
-# Carregar os dados do JSON
-dados = json.loads(faturamento_json)
-faturamento_diario = dados["faturamento_diario"]
+  valores = [item['valor'] for item in dados]
 
-# Filtrar apenas os dias com faturamento > 0
-faturamento_valido = [f for f in faturamento_diario if f > 0]
+  media_mensal = sum(valores) / len(valores)
+  menor_valor = min(valores)
+  maior_valor = max(valores)
+  dias_acima_media = sum(1 for valor in valores if valor > media_mensal)
 
-# 1. Menor valor de faturamento ocorrido em um dia do mês
-menor_faturamento = min(faturamento_valido)
+  return menor_valor, maior_valor, dias_acima_media
 
-# 2. Maior valor de faturamento ocorrido em um dia do mês
-maior_faturamento = max(faturamento_valido)
+arquivo_json = 'C:/Users/Jotape/Desktop/Teste/questao1/dados.json' # Verifica O CAMINHO DO ARQUIVO
+resultado = analisar_faturamento(arquivo_json)
 
-# 3. Média mensal dos dias com faturamento > 0
-media_mensal = sum(faturamento_valido) / len(faturamento_valido)
-
-# Número de dias com faturamento acima da média mensal
-dias_acima_da_media = sum(1 for f in faturamento_valido if f > media_mensal)
-
-# Exibindo os resultados
-print(f"Menor valor de faturamento: R$ {menor_faturamento:.2f}")
-print(f"Maior valor de faturamento: R$ {maior_faturamento:.2f}")
-print(f"Dias com faturamento acima da média mensal: {dias_acima_da_media} dias")
-
-
+print("Menor valor de faturamento:", resultado[0])
+print("Maior valor de faturamento:", resultado[1])
+print("Número de dias acima da média:", resultado[2])
 print("")
 print("")
 
-#QUESTAO 4
+
+                                                    #QUESTAO 4
 
 print(" --------  QUESTAO 4  -------- ")
 print("")
@@ -117,6 +112,8 @@ print ("• Outros – R$19.849,53")
 print ("")
 
 print ("Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora. ")
+
+print (" ______RESPOSTA _____")
 
 def calcular_percentual_estados(faturamento_por_estado):
 
@@ -147,7 +144,7 @@ for estado, percentual in resultados.items():
 print ("")
 print ("")
 
-#QUESTAO 5 
+                                                        #QUESTAO 5 
 
 print(" --------  QUESTAO 5  -------- ")
 print("")
@@ -156,6 +153,8 @@ print("IMPORTANTE:")
 print("a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;")
 print("b) Evite usar funções prontas, como, por exemplo, reverse;")
 print("")
+
+print (" ______RESPOSTA _____")
 
 def inverter_string(texto):
     """Inverte os caracteres de uma string."""
